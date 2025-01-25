@@ -34,4 +34,4 @@ jobs:
         run: |
           docker build -t iris-model .
           docker run -p 5000:5000 iris-model
-          python app.py
+          python main.py
