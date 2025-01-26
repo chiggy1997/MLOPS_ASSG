@@ -15,4 +15,4 @@ EXPOSE 5000
 
 # Command to run the Flask app
 CMD ["python", "-v", "tests/test_model.py"]
-CMD ["python3", "-m", "Flask",  "run", "--host=0.0.0.0"] 
+CMD ["python3", "-m", "flask",  "run", "--host=0.0.0.0"] 
