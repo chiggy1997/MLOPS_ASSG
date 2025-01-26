@@ -34,8 +34,5 @@ jobs:
         run: |
           docker build -t iris-model .
           docker run -d -p 5000:5000 iris-model 
-          docker build . -t deploy_flask
-          docker run -p 5000:5000 -t -i deploy_flask:latest
-
-         
+                   
           
