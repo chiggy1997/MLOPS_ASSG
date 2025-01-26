@@ -10,9 +10,6 @@ COPY . /app
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Expose the port the app will run on
-EXPOSE 5000
-
 # Command to run the Flask app
 
 ENTRYPOINT [ "python" ]
