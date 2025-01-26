@@ -1,5 +1,14 @@
 name: MLOps Pipeline
 
+  
+networks:
+  counter-net:
+    driver: bridge
+
+environment:
+      - FLASK_APP=app.py
+      - FLASK_RUN_HOST=0.0.0.0
+      
 on:
   push:
     branches:
