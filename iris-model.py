@@ -38,7 +38,7 @@ print('pandas: {}'.format(pandas.__version__))
 # Scikit-Learn
 import sklearn
 print('sklearn: {}'.format(sklearn.__version__))      
-
+import joblib
 #######################
 ########  Step 2 ########
 #######################
@@ -159,3 +159,6 @@ acc_score = accuracy_score(Y_validation, predictions)
 print("\n", "Accuracy of SVM model: {}".format(format(acc_score,'.3f')))
 print("\n", "Confusion matrix: \n", confusion_matrix(Y_validation, predictions))
 print("\n", "Classification report: \n", classification_report(Y_validation, predictions))
+
+# Save the model
+joblib.dump(model, 'linear_regression_model.pkl')
