@@ -161,4 +161,4 @@ print("\n", "Confusion matrix: \n", confusion_matrix(Y_validation, predictions))
 print("\n", "Classification report: \n", classification_report(Y_validation, predictions))
 
 # Save the model
-joblib.dump(model, 'linear_regression_model.pkl')
+joblib.dump(model, 'svm.pkl')
