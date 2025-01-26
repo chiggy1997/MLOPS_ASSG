@@ -32,7 +32,7 @@ jobs:
 
       - name: Build and Run Docker
         run: |
-          docker build -t iris-model .
-          docker run -p 5000:5000 iris-model 
+          docker build -t my_app:latest .
+          docker run --rm -it -p 5000:5000 my_app:latest 
                  
           
