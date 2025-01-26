@@ -1,28 +1,35 @@
 from flask import Flask, request, jsonify
-import joblib
+import pickle
 import numpy as np
-from gevent.pywsgi import WSGIServer
 
-
-# Load the model
-model = joblib.load('svm.pkl')
-
+# Initialize Flask app
 app = Flask(__name__)
+
+# Load the trained model
+with open('model.pkl', 'rb') as f:
+    model = pickle.load(f)
 
 @app.route('/')
 def home():
-    return "Hello, Flask is running inside Docker!"
+    return "ML Model Prediction API is running!"
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    data = request.get_json(force=True)
-    features = np.array(data['features']).reshape(1, -1)
-    prediction = model.predict(features)
-    return jsonify({'prediction': prediction[0]})
+    # Get JSON data from request
+    data = request.get_json()
 
-@app.route('/api', methods=['GET'])
-def index():
-    return "Hello, World!"
+    # Ensure the input data is valid
+    if not data or 'features' not in data:
+        return jsonify({'error': 'Invalid input. Please provide "features" as a list.'}), 400
+
+    # Convert features to a NumPy array
+    features = np.array(data['features']).reshape(1, -1)
+
+    # Make a prediction
+    prediction = model.predict(features)
+
+    # Return the result
+    return jsonify({'prediction': prediction.tolist()})
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5000)
