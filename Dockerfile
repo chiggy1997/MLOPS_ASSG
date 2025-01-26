@@ -14,5 +14,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 5000
 
 # Command to run the Flask app
-CMD ["python", "-v", "tests/test_model.py"]
-CMD ["python3", "-m", "flask",  "run", "--host=0.0.0.0"] 
+
+ENTRYPOINT [ "python" ]
+CMD [ "app.py" ]
