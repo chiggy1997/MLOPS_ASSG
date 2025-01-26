@@ -15,4 +15,6 @@ EXPOSE 5000
 
 # Command to run the Flask app
 CMD ["python", "-u", "app.py"]
-CMD ["flask", "run", "--host", "0.0.0.0"]
+ENV FLASK_APP=app.py
+ENTRYPOINT [ "flask"]
+CMD ["run", "--host", "0.0.0.0"]
